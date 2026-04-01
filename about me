@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>About Publisher</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>About Publisher</h1>
+</header>
+
+<section>
+<p>
+Hello! My name is Adyan Hasan. I am a Bangladeshi currently living in Christchurch, New Zealand. 
+I am learning how to build websites using HTML and CSS.
+I am a 14 year old in Year 10 and i am currently learning website development
+in Digital Technology at Burnside High School. People say I have a special birthday a triple 11, as I 
+was born on 11th of november 2011. Back in Bangladesh I was a student of grade 8 at a English Medium 
+School called Apple Tree International School. Besides of Studies I was also in many other activities.
+I used to play sports like football and cricket, I also was in Sports Clubs and Robotics Club. My 
+favorite game is cricket. Besides playing I also like watching cricket matches. If i talk about my 
+favorite food, My favorite food is a bengali dish called Biryani, And that was pretty much all about me.
+</p>
+
+<a href="index.html">Image creation</a>
+</section>
+
+<footer>
+<p>My Website</p>
+</footer>
+<img src="Images/Adyan_Hasan.jpeg" alt="Picture of the Publisher">
+
+</body>
+
+</html>
