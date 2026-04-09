@@ -78,3 +78,9 @@ img {
     text-align: right;
     padding: 3em 3em;
 }
+.about-me {
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
