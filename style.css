@@ -84,3 +84,7 @@ img {
     background-repeat: no-repeat;
     background-position: center;
 }
+a {
+    color: white;
+    text-decoration: none; /* removes underline */
+}
