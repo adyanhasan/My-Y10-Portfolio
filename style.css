@@ -1,3 +1,14 @@
+/* This forces the child sections to sit side-by-side */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* This forces both blocks to share the width equally */
+.topic {
+  flex: 1;
+}
+
 /* A simple css reset */
 body,
 html {
