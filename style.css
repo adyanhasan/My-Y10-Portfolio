@@ -1,106 +1,232 @@
-/* This forces the child sections to sit side-by-side */
-.container {
+:root{
+  --bg: #101823;
+  --panel: #16202e;
+  --line: rgba(140, 200, 230, 0.10);
+  --line-strong: rgba(140, 200, 230, 0.22);
+  --text: #edf2f7;
+  --muted: #93a4bc;
+  --accent: #ff8a3d;
+  --accent-dim: rgba(255, 138, 61, 0.35);
+  --max: 880px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+h1, h2, h3{
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+a{ color: inherit; }
+
+/* ---------- Nav ---------- */
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  align-items: center;
+  padding: 16px max(20px, calc((100% - var(--max)) / 2));
+  background: rgba(16, 24, 35, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+nav .brand{
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: auto;
+  letter-spacing: 0.01em;
+}
+
+nav a{
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav a:hover, nav a:focus-visible{
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* ---------- Layout ---------- */
+main{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 96px 0 72px;
+  animation: rise 0.7s ease both;
+}
+
+@keyframes rise{
+  from{ opacity: 0; transform: translateY(14px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+.hero h1{
+  font-size: clamp(38px, 6vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.hero p{
+  margin: 18px 0 0;
+  max-width: 46ch;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.hero .tag{
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ---------- Sections ---------- */
+section.block{
+  padding: 56px 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.block-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.block-head h2{
+  font-size: 26px;
+}
+
+.block-num{
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.block-intro{
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 0 34px;
+}
+
+/* ---------- Gallery / spec-sheet cards ---------- */
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+}
+
+figure{
+  margin: 0;
+  position: relative;
+  padding: 14px;
+}
+
+figure::before, figure::after{
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--accent-dim);
+}
+
+figure::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
+figure::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
+figure img{
   width: 100%;
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
 }
 
-/* This forces both blocks to share the width equally */
-.topic {
-  flex: 1;
+figcaption{
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* A simple css reset */
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    /* The Font Family- Really important!! */
-    font-family: Arial, sans-serif;
-    box-sizing: border-box;
+figcaption .idx{
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
 }
 
-/* reset for images to ensure they ar 100% of the parent container width */
-img {
-    width: 100%;
+/* ---------- Game embed ---------- */
+.game-frame{
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  padding: 18px;
+  display: inline-block;
+  position: relative;
 }
 
-/* The hero section styling- use your OWN Hero Image URL here */
-.hero {
-    background-image: url('images/techquitybanner-1130x160.png');
-    height: 25vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    position: relative;
+.game-frame::before, .game-frame::after{
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--accent-dim);
+}
+.game-frame::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
+.game-frame::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.game-frame iframe{
+  display: block;
+  width: 100%;
+  max-width: 552px;
+  height: 167px;
+  border: none;
 }
 
-/* BIG text styling for the hero section text */
-.hero-text {
-    font-size: 4em;
-    font-weight: bold;
+/* ---------- Footer ---------- */
+footer{
+  padding: 40px 20px 60px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--line-strong);
 }
 
-/* nice big font on a banner style background */
-.topic-title{
-    color: white;
-    font-size: 2em;
-    padding: 0.1em 3em;
-    background-color: rgb(71, 71, 71);
-}
-
-/* Three column grid with a nice big gap */
-.topic-content{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6em;
-    /* bring the whole section in off the sides of the page */
-    width: 70%;
-    /* top margin of 3em and center right/left */
-    margin: 3em auto;
-}
-
-/* Styling for the individual topic cards rounded edges background color and a drop shadow */
-.topic-card{
-    background-color: rgb(71, 71, 71);
-    color: white;
-    padding: 1em;
-    border-radius: 0.5em;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Styling for the topic card titles */
-.topic-card-text{
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-    /* center align text */
-    text-align: center;
-}
-
-
-/* Styling for a footer section to take a bit of spcae at the bottom of the page */
-.footer{
-    background-color: rgb(71, 71, 71);
-    color: white;
-    text-align: right;
-    padding: 3em 3em;
-}
-.about-me {
-    background-image: url("images/background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.about-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-.about-link:hover {
-    color: lightgray;
+@media (max-width: 600px){
+  nav{ padding: 14px 16px; }
+  .hero{ padding: 70px 0 48px; }
 }
