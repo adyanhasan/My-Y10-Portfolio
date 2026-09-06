@@ -1,340 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adyan Hasan — Year 10 Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #101823;
-    --panel: #16202e;
-    --line: rgba(140, 200, 230, 0.10);
-    --line-strong: rgba(140, 200, 230, 0.22);
-    --text: #edf2f7;
-    --muted: #93a4bc;
-    --accent: #ff8a3d;
-    --accent-dim: rgba(255, 138, 61, 0.35);
-    --max: 880px;
-  }
-
-  *{ box-sizing: border-box; }
-
-  html{ scroll-behavior: smooth; }
-
-  body{
-    margin: 0;
-    background-color: var(--bg);
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 40px 40px;
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    line-height: 1.65;
-  }
-
-  h1, h2, h3{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  a{ color: inherit; }
-
-  /* ---------- Nav ---------- */
-  nav{
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 22px;
-    align-items: center;
-    padding: 16px max(20px, calc((100% - var(--max)) / 2));
-    background: rgba(16, 24, 35, 0.88);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line-strong);
-  }
-
-  nav .brand{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    margin-right: auto;
-    letter-spacing: 0.01em;
-  }
-
-  nav a{
-    text-decoration: none;
-    font-size: 14px;
-    color: var(--muted);
-    padding: 6px 0;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-
-  nav a:hover, nav a:focus-visible{
-    color: var(--text);
-    border-color: var(--accent);
-  }
-
-  /* ---------- Layout ---------- */
-  main{
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    padding: 96px 0 72px;
-    animation: rise 0.7s ease both;
-  }
-
-  @keyframes rise{
-    from{ opacity: 0; transform: translateY(14px); }
-    to{ opacity: 1; transform: translateY(0); }
-  }
-
-  .hero h1{
-    font-size: clamp(38px, 6vw, 58px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-  }
-
-  .hero p{
-    margin: 18px 0 0;
-    max-width: 46ch;
-    font-size: 18px;
-    color: var(--muted);
-  }
-
-  .hero .tag{
-    display: inline-block;
-    margin-bottom: 18px;
-    font-size: 13px;
-    color: var(--accent);
-    border: 1px solid var(--accent-dim);
-    border-radius: 3px;
-    padding: 4px 10px;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  /* ---------- Sections ---------- */
-  section.block{
-    padding: 56px 0;
-    border-top: 1px solid var(--line-strong);
-  }
-
-  .block-head{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    margin-bottom: 14px;
-  }
-
-  .block-head h2{
-    font-size: 26px;
-  }
-
-  .block-num{
-    font-size: 13px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  .block-intro{
-    color: var(--muted);
-    max-width: 60ch;
-    margin: 0 0 34px;
-  }
-
-  /* ---------- Gallery / spec-sheet cards ---------- */
-  .gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 28px;
-  }
-
-  figure{
-    margin: 0;
-    position: relative;
-    padding: 14px;
-  }
-
-  figure::before, figure::after,
-  figure .corner-r::before, figure .corner-r::after{
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 1.5px solid var(--accent-dim);
-  }
-
-  figure::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
-  figure::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
-
-  figure img{
-    width: 100%;
-    display: block;
-    background: var(--panel);
-    border: 1px solid var(--line-strong);
-  }
-
-  figcaption{
-    margin-top: 12px;
-    font-size: 14px;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  figcaption .idx{
-    color: var(--accent);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 12px;
-  }
-
-  /* ---------- Game embed ---------- */
-  .game-frame{
-    border: 1px solid var(--line-strong);
-    background: var(--panel);
-    padding: 18px;
-    display: inline-block;
-    position: relative;
-  }
-
-  .game-frame::before, .game-frame::after{
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 1.5px solid var(--accent-dim);
-  }
-  .game-frame::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
-  .game-frame::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
-
-  .game-frame iframe{
-    display: block;
-    width: 100%;
-    max-width: 552px;
-    height: 167px;
-    border: none;
-  }
-
-  /* ---------- Footer ---------- */
-  footer{
-    padding: 40px 20px 60px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 13px;
-    border-top: 1px solid var(--line-strong);
-  }
-
-  @media (max-width: 600px){
-    nav{ padding: 14px 16px; }
-    .hero{ padding: 70px 0 48px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Showcase Website</title>
 </head>
+
 <body>
 
-<nav>
-  <span class="brand">Adyan Hasan</span>
-  <a href="#image-editing">Image Editing</a>
-  <a href="#blender">Blender</a>
-  <a href="#design-manufacturing">Design &amp; Manufacturing</a>
-  <a href="#game-design">Game Design</a>
-</nav>
+    <!-- The Hero Section -------------------------------------------------------------------------------------- -->
+    <section class="hero">
+        <div class="hero-text">Adyan's Year 10 Portfolio</div>
+    </section>
 
-<main>
+<!-- Image Editing -->
+<section class="topic">
+    <div class="topic-title">
+        <h1>Image Editing</h1>
+    </div>
 
-  <section class="hero">
-    <span class="tag">Year 10 Portfolio</span>
-    <h1>Making things,<br>on screen and off it.</h1>
-    <p>A collection of photo edits, Blender models, 3D-printed parts, and a game I built from scratch — all made this year.</p>
-  </section>
+    <div class="topic-content">
+        <div class="topic-card">
+            <img src="images/Penguin.png" alt="Penguin Image">
+            <h2 class="topic-card-text">Penguin Image</h2>
+        </div>
 
-  <section class="block" id="image-editing">
-    <div class="block-head">
-      <h2>Image Editing</h2>
-      <span class="block-num">01</span>
-    </div>
-    <p class="block-intro">Editing photos to add effects, swap in new backgrounds, and put together scenes that don't exist in real life.</p>
-    <div class="gallery">
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Penguin.png" alt="Edited penguin image">
-        <figcaption><span>Penguin</span><span class="idx">IMG.01</span></figcaption>
-      </figure>
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Character.png" alt="Edited character image">
-        <figcaption><span>Character</span><span class="idx">IMG.02</span></figcaption>
-      </figure>
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Snow flakes.png" alt="Edited snow flakes image">
-        <figcaption><span>Snow Flakes</span><span class="idx">IMG.03</span></figcaption>
-      </figure>
-    </div>
-  </section>
+        <div class="topic-card">
+            <img src="images/Character.png" alt="Character Image">
+            <h2 class="topic-card-text">Character Image</h2>
+        </div>
 
-  <section class="block" id="blender">
-    <div class="block-head">
-      <h2>Blender</h2>
-      <span class="block-num">02</span>
+        <div class="topic-card">
+            <img src="images/Snow flakes.png" alt="Snow Flakes Image">
+            <h2 class="topic-card-text">Snow Flakes Image</h2>
+        </div>
     </div>
-    <p class="block-intro">Modelling and rendering in Blender, from a treasure chest to a low-poly snowman.</p>
-    <div class="gallery">
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Chest.png" alt="3D rendered chest">
-        <figcaption><span>Chest</span><span class="idx">3D.01</span></figcaption>
-      </figure>
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Snowman.png" alt="3D rendered snowman">
-        <figcaption><span>Snowman</span><span class="idx">3D.02</span></figcaption>
-      </figure>
-    </div>
-  </section>
+</section>
 
-  <section class="block" id="design-manufacturing">
-    <div class="block-head">
-      <h2>Design &amp; Manufacturing</h2>
-      <span class="block-num">03</span>
-    </div>
-    <p class="block-intro">Designing parts in CAD, then printing them on a 3D printer to see them made real.</p>
-    <div class="gallery">
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Car.png" alt="3D printed car">
-        <figcaption><span>3D Printed Car</span><span class="idx">CAD.01</span></figcaption>
-      </figure>
-      <figure>
-        <img src="https://adyanhasan.github.io/My-Y10-Portfolio/images/Cookie Cutter.png" alt="3D printed cookie cutter">
-        <figcaption><span>3D Printed Cookie Cutter</span><span class="idx">CAD.02</span></figcaption>
-      </figure>
-    </div>
-  </section>
 
-  <section class="block" id="game-design">
-    <div class="block-head">
-      <h2>Game Design</h2>
-      <span class="block-num">04</span>
+<!-- Blender -->
+<section class="topic">
+    <div class="topic-title">
+        <h1>Blender</h1>
     </div>
-    <p class="block-intro">A game I built and published — playable straight from the browser below.</p>
-    <div class="game-frame">
-      <iframe src="https://itch.io/embed/4966766?linkback=true" title="Game embed" allowfullscreen></iframe>
+
+    <div class="topic-content">
+        <div class="topic-card">
+            <img src="images/Chest.png" alt="Chest Image">
+            <h2 class="topic-card-text">Chest Image</h2>
+        </div>
+
+        <div class="topic-card">
+            <img src="images/Snowman.png" alt="Snowman Image">
+            <h2 class="topic-card-text">Snow Man Image</h2>
+        </div>
     </div>
-  </section>
+</section>
 
-</main>
 
-<footer>
-  © 2026 Adyan Hasan
-</footer>
+<!-- Design and Manufacturing -->
+<section class="topic">
+    <div class="topic-title">
+        <h1>Design and Manufacturing</h1>
+    </div>
+
+    <div class="topic-content">
+        <div class="topic-card">
+            <img src="images/Car.png" alt="3D Printed Car">
+            <h2 class="topic-card-text">3D Printed Car Image</h2>
+        </div>
+
+        <div class="topic-card">
+            <img src="images/Cookie Cutter.png" alt="3D Printed Cookie Cutter">
+            <h2 class="topic-card-text">3D Printed Cookie Cutter Image</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Game Design -->
+<section class="topic">
+    <div class="topic-title">
+        <h1>Game Design</h1>
+    </div>
+
+    <div class="topic-content">
+        <div class="topic-card">
+            <iframe 
+                frameborder="0" 
+                src="https://itch.io/embed/4966766" 
+                width="552" 
+                height="167">
+                <a href="https://adyan-hasan.itch.io/wave-defence">
+                    Wave Defense by Adyan_Hasan
+                </a>
+            </iframe>
+        </div>
+    </div>
+</section>    
+
+    <!-- A Simple Website Footer ------------------------------------------------------------------------------ -->
+    <footer class="footer">
+        <p>&copy; 2026 My Showcase Website By Adyan Hasan</p>
+    </footer>
 
 </body>
 </html>
