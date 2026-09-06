@@ -1,3 +1,11 @@
+/* ============================================================
+   Fonts
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ============================================================
+   Tokens
+   ============================================================ */
 :root{
   --bg: #101823;
   --panel: #16202e;
@@ -7,226 +15,185 @@
   --muted: #93a4bc;
   --accent: #ff8a3d;
   --accent-dim: rgba(255, 138, 61, 0.35);
-  --max: 880px;
 }
 
-*{ box-sizing: border-box; }
-
-html{ scroll-behavior: smooth; }
-
-body{
-  margin: 0;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 40px 40px;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-size: 17px;
-  line-height: 1.65;
-}
-
-h1, h2, h3{
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  margin: 0;
-}
-
-a{ color: inherit; }
-
-/* ---------- Nav ---------- */
-nav{
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* This forces the child sections to sit side-by-side */
+.container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 22px;
-  align-items: center;
-  padding: 16px max(20px, calc((100% - var(--max)) / 2));
-  background: rgba(16, 24, 35, 0.88);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--line-strong);
-}
-
-nav .brand{
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  margin-right: auto;
-  letter-spacing: 0.01em;
-}
-
-nav a{
-  text-decoration: none;
-  font-size: 14px;
-  color: var(--muted);
-  padding: 6px 0;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-nav a:hover, nav a:focus-visible{
-  color: var(--text);
-  border-color: var(--accent);
-}
-
-/* ---------- Layout ---------- */
-main{
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ---------- Hero ---------- */
-.hero{
-  padding: 96px 0 72px;
-  animation: rise 0.7s ease both;
-}
-
-@keyframes rise{
-  from{ opacity: 0; transform: translateY(14px); }
-  to{ opacity: 1; transform: translateY(0); }
-}
-
-.hero h1{
-  font-size: clamp(38px, 6vw, 58px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-}
-
-.hero p{
-  margin: 18px 0 0;
-  max-width: 46ch;
-  font-size: 18px;
-  color: var(--muted);
-}
-
-.hero .tag{
-  display: inline-block;
-  margin-bottom: 18px;
-  font-size: 13px;
-  color: var(--accent);
-  border: 1px solid var(--accent-dim);
-  border-radius: 3px;
-  padding: 4px 10px;
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-/* ---------- Sections ---------- */
-section.block{
-  padding: 56px 0;
-  border-top: 1px solid var(--line-strong);
-}
-
-.block-head{
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 24px;
-  margin-bottom: 14px;
-}
-
-.block-head h2{
-  font-size: 26px;
-}
-
-.block-num{
-  font-size: 13px;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.block-intro{
-  color: var(--muted);
-  max-width: 60ch;
-  margin: 0 0 34px;
-}
-
-/* ---------- Gallery / spec-sheet cards ---------- */
-.gallery{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 28px;
-}
-
-figure{
-  margin: 0;
-  position: relative;
-  padding: 14px;
-}
-
-figure::before, figure::after{
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--accent-dim);
-}
-
-figure::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
-figure::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
-
-figure img{
   width: 100%;
-  display: block;
-  background: var(--panel);
-  border: 1px solid var(--line-strong);
 }
 
-figcaption{
-  margin-top: 12px;
-  font-size: 14px;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
+/* This forces both blocks to share the width equally */
+.topic {
+  flex: 1;
 }
 
-figcaption .idx{
-  color: var(--accent);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
+/* A simple css reset */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Inter', Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: var(--bg);
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text);
+    scroll-behavior: smooth;
 }
 
-/* ---------- Game embed ---------- */
-.game-frame{
-  border: 1px solid var(--line-strong);
-  background: var(--panel);
-  padding: 18px;
-  display: inline-block;
-  position: relative;
+*, *::before, *::after{
+    box-sizing: border-box;
 }
 
-.game-frame::before, .game-frame::after{
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid var(--accent-dim);
-}
-.game-frame::before{ top: 0; left: 0; border-right: none; border-bottom: none; }
-.game-frame::after{ bottom: 0; right: 0; border-left: none; border-top: none; }
-
-.game-frame iframe{
-  display: block;
-  width: 100%;
-  max-width: 552px;
-  height: 167px;
-  border: none;
+/* reset for images to ensure they ar 100% of the parent container width */
+img {
+    width: 100%;
+    display: block;
 }
 
-/* ---------- Footer ---------- */
-footer{
-  padding: 40px 20px 60px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  border-top: 1px solid var(--line-strong);
+/* The hero section styling */
+.hero {
+    background-image: none;
+    background-color: var(--bg);
+    height: 40vh;
+    min-height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--line-strong);
+    padding: 0 20px;
+}
+
+/* BIG text styling for the hero section text */
+.hero-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    max-width: 14ch;
+}
+
+/* nice big font on a banner style background */
+.topic-title{
+    color: var(--text);
+    font-size: 1.1em;
+    padding: 0.9em 2em;
+    background-color: var(--panel);
+    border-left: 3px solid var(--accent);
+    border-bottom: 1px solid var(--line-strong);
+}
+
+.topic-title h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Three column grid, collapses down on smaller screens */
+.topic-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5em;
+    width: min(90%, 1100px);
+    margin: 3em auto;
+}
+
+@media (max-width: 900px){
+    .topic-content{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2em;
+    }
 }
 
 @media (max-width: 600px){
-  nav{ padding: 14px 16px; }
-  .hero{ padding: 70px 0 48px; }
+    .topic-content{
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+        width: 88%;
+    }
+    .hero-text{
+        font-size: 2em;
+    }
+}
+
+/* Styling for the individual topic cards: dark panel with blueprint corner marks */
+.topic-card{
+    background-color: var(--panel);
+    color: var(--text);
+    padding: 1em;
+    border-radius: 2px;
+    border: 1px solid var(--line-strong);
+    box-shadow: none;
+    position: relative;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.topic-card::before,
+.topic-card::after{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--accent-dim);
+    pointer-events: none;
+}
+
+.topic-card::before{ top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.topic-card::after{ bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.topic-card:hover{
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+}
+
+.topic-card img{
+    border: 1px solid var(--line-strong);
+    background: var(--bg);
+}
+
+/* Styling for the topic card titles */
+.topic-card-text{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05em;
+    font-weight: 500;
+    margin: 0.8em 0 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+
+/* Styling for a footer section to take a bit of space at the bottom of the page */
+.footer{
+    background-color: var(--panel);
+    color: var(--muted);
+    text-align: center;
+    padding: 2em 2em;
+    border-top: 1px solid var(--line-strong);
+    font-size: 0.9em;
+}
+
+.about-me {
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.about-link {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.about-link:hover {
+    color: var(--accent);
 }
