@@ -115,6 +115,12 @@ img {
     text-decoration: none;
     font-size: 1.2em;
 }
+/* Reset the h1 font-size inside the topic titles */
+.topic-title h1 {
+    font-size: 1.25rem; /* Makes the subtitle text smaller than the 2.5em main title */
+    margin: 0;         /* Removes default browser spacing around the heading */
+}
+
 
 .about-link:hover {
     color: lightgray;
