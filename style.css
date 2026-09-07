@@ -53,10 +53,6 @@ img {
     background-color: #4b4b63;
     text-align: center;
 }
-.topic-title h1 {
-    font-size: 1.3em;
-    margin: 0;
-}
 
 /* Three column grid that collapses on smaller screens */
 .topic-content{
@@ -123,3 +119,13 @@ img {
 .about-link:hover {
     color: lightgray;
 }
+/* Fix text scale hierarchy */
+.hero-text {
+    font-size: 2.5rem !important;
+}
+
+.topic-title h1 {
+    font-size: 1.5rem !important;
+    margin: 0;
+}
+
