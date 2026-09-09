@@ -22,10 +22,14 @@ html {
 }
 
 /* reset for images to ensure they are 100% of the parent container width */
+/* Update this block in your CSS */
 img {
     width: 100%;
+    height: 250px;       /* Forces every image to take up the exact same vertical space */
+    object-fit: contain; /* Prevents stretching and preserves original image shapes */
     border-radius: 0.3em;
 }
+
 
 /* The hero section styling */
 .hero {
